@@ -1,4 +1,4 @@
-@charset "ISO-8859-1";
+@charset "UTF-8";
 /*!
 * Start Bootstrap - Resume v6.0.1 (https://startbootstrap.com/template-overviews/resume)
 * Copyright 2013-2020 Start Bootstrap
@@ -53,6 +53,23 @@ html {
   -webkit-text-size-adjust: 100%;
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
+
+
+figcaption {
+    margin: 10px 0 0 0;
+    font-variant: small-caps;
+    font-family: sans-serif;
+    color: #bb3333;
+}
+figure {
+    padding: 5px;
+}
+
+.span-img-with-caption{
+    text-align: center;
+    font-size: 1.05rem;
+}
+
 
 article, aside, figcaption, figure, footer, header, hgroup, main, nav, section {
   display: block;
@@ -477,6 +494,9 @@ mark,
 .img-fluid {
   max-width: 100%;
   height: auto;
+}
+.img-fluid:hover{
+  transform: scale(1.05);
 }
 
 .img-thumbnail {
@@ -10025,7 +10045,7 @@ h1 {
 }
 
 p.lead {
-  font-size: 1.15rem;
+  font-size: 1.25rem;
   font-weight: 400;
 }
 
@@ -10132,4 +10152,32 @@ section.resume-section .resume-section-content {
     padding-top: 5rem;
     padding-bottom: 5rem;
   }
+}
+
+section.dissertation-section{
+  display: flex;
+  align-items: center;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  padding-top: 5rem;
+  padding-bottom: 5rem;
+  max-width: 100rem;
+}
+
+@media (min-width: 768px) {
+  section.dissertation-section {
+    min-height: 100vh;
+  }
+}
+@media (min-width: 992px) {
+  section.dissertation-section {
+    padding-left: 3rem;
+    padding-right: 3rem;
+    padding-top: 5rem;
+    padding-bottom: 5rem;
+  }
+}
+
+section.dissertation-section .dissertation-section-content {
+  width: 100%;
 }

@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <meta charset="ISO-8859-1" />
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
         <meta name="description" content="" />
         <meta name="author" content="" />
@@ -14,6 +13,8 @@
         <link href="https://fonts.googleapis.com/css?family=Muli:400,400i,800,800i" rel="stylesheet" type="text/css" />
         <!-- Core theme CSS (includes Bootstrap)-->
         <link href="css/styles.css" rel="stylesheet" />
+        <style>
+        </style>
     </head>
     <body id="page-top">
         <!-- Navigation-->
@@ -27,27 +28,169 @@
                 <ul class="navbar-nav">
                     <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#overview">Overview</a></li>
                     <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#fem">Finite Element Methods</a></li>
-                    <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#code">The Code</a></li>
-                    <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#interact">Interact</a></li>
+                    <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#implementation">Implementation</a></li>
+                    <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#ui">User Interface</a></li>
+                    <!-- <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#interact">Interact</a></li>  Interact to come w/ web integration -->
                 </ul>
             </div>
         </nav>
         <div class="container-fluid p-0">
-            <!-- About-->
-            <section class="resume-section" id="overview">
-                <div class="resume-section-content">
+
+            <!-- Overview-->
+            <section class="dissertation-section" id="overview">
+                <div class="dissertation-section-content">
                     <h1 class="mb-0">
                         Dissertation Project
-                        <span class="text-primary"> Advection </span>
+                        <span class="text-primary"> <!--The Orange text can go in this class, but for the individual pages I think it looks better without --> </span>
                     </h1>
                     <div class="subheading mb-3">
-                       Solving Advection in 1 and 2 Dimensions with Finite Element Methods · <a class="social-icon" href="https://github.com/adam-howlett" target="_blank" >GitHub Repo <i class="fab fa-github"></i></a> ·  <a href="assets/docs/Adam Howlett - Dissertation Report.pdf" target="_blank"> Dissertation Report</a>
+                       Solving Advection Problems in 1 and 2 Dimensions · <a class="social-icon" href="https://github.com/adam-howlett/DDMRes-2D" target="_blank" >GitHub Repo <i class="fab fa-github"></i></a> ·  <a href="assets/docs/Adam Howlett - Dissertation Report.pdf" target="_blank"> Dissertation Report</a>
                     </div>
-                    <p class="lead mb-2">The advection equation models the tranport of a substance through a medium, and has important applications in fluid mechanics. Even basic advection problems results in hyperbolic partial differential equations, which are notoriously difficult to solve numerically. Much work has been done on the solution of advection (and "advection-reaction") problems using finite element methods, and my dissertation project was an extension of a state of the art "minimal-residual" technique to an important test case. </p>
-                    <p class ="lead mb-2">For this project, I wrote several C++ programs to define and solve the problem on this test case. Using object orientation principles, I constructed classes to define the mathematical objects that are used in the discretisation methods, and then designed additional methods to construct and solve the resultant system. I have since extended the program to solve and plot the system based on user input, and an interactive version of the main results can be found below.</p>
+                    <p class="lead mb-3 mr-x1-1">
+                        The advection equation models the tranport of a substance through a medium, subject to some velocity field, and has important applications in fluid mechanics. 
+                        Even basic advection problems result in hyperbolic partial differential equations, which are notoriously difficult to solve numerically. 
+                        Much work has been done on the solution of advection (and "advection-reaction") problems using finite element methods, and my dissertation project was an extension of a state of the art "minimal-residual" technique to an important test case. 
+                    </p>
+
+                    <p class ="lead mb-5">
+
+                            For this project, I wrote several C++ programs to define and solve the problem on this test case. 
+                            Using object orientation principles, I constructed classes to define the mathematical objects that are used in the discretisation methods, and then designed additional routines to construct and solve the resultant system. 
+                            Ultimately, I was able to demonstrate optimal convergence rates to known solutions, which had not been achieved before in this way.
+                            I have since extended the program to take user input via a user interface I designed, and recreate the main results used in my dissertation project.
+                    </p>
+            </section>
+
+            <hr class="m-0" />
+
+
+            <!-- Finite Element Methods-->
+            <section class="dissertation-section" id="fem">
+                <div class="dissertation-section-content">
+                   <h2 class="mb-3">
+                        Finite Element Methods
+                   </h2>
+
+                   <p class = "lead mb-4">
+                        Broadly speaking, finite element methods (in 2D) can solve a partial differential eqauation by dividing a space into discrete triangles (called <i>elements</i>), constructing a system of equations based on this discretisation, and then solving that system to obtain an 
+                        approximation for the solution to the equation at some points within this subdivision (or <i>mesh</i>). Any implementation of these methods in 2D needs to be able to deal with these meshes in a way that can directly relate to their co-ordinates in 2D space.
+                   </p>
+
+                   <p class = "lead mb-4">
+                        <span class = "span-img-with-caption" style = "width:200px; float:right;">
+                            <img src="assets/img/2_unrefined.png" alt="PetersonMesh" style = "width:200px;height:200px;" />
+                            The "Peterson Mesh", a subdivision of the unit square.
+                        </span>
+
+                        A technicality of these methods is the need to construct not one, but two subdivisions of the space in question - one <b>trial</b> space, and one <b>test</b> space. The distinction between the two is not usually important (say, in a standard <a href="https://en.wikipedia.org/wiki/Galerkin_method" target="_blank"> Galerkin Method</a>)
+                        because the trial and test spaces are required to be the same. However, the method used in my dissertation, the discrete-dual minimal residual (DDMRes) method, imposes no such restriction, and in most cases requires them to be different (especially in the context of advection).
+                        <br> </br>
+                        The generation of the system of equations to solve requires calculating several integrals over the product of the elements of both spaces. What this means practically is that you need to be able to calculate the area associated 
+                        with the overlap of every element in one space with every element of the other.
+                        As a result, it is much more convenient computationally to build one space as a procedural ‘refinement’ of the other (meaning simply that the test space is 'built on' the trial space in some structured way). 
+                   </p>
+
+                   <p class = "lead mb-4">
+                        <span class = "span-img-with-caption" style = "width:200px; float:right;">
+                            <img src="assets/img/2_redrefined.png" alt="PetersonMesh" style = "width:200px;height:200px;" />
+                            The "Red Refinement", of the above mesh.
+                        </span>
+
+                        The Peterson Mesh, on which my dissertation was focused, was refined in two ways in this project - The so-called "red refinement", which divides every element into four smaller elements, and the "vertical line" refinement (my own construction), which draws vertical lines at certain steps along the mesh, depending on its degree. 
+                        <br> </br>
+                        A more in-depth explanation of these principles can be found in section 4.2  onwards in my <a href="assets/docs/Adam Howlett - Dissertation Report.pdf#page=23" target="_blank"> dissertation report</a>. These meshes are among the more challenging 
+                        mathematical objects that it was necessary to capture in some general way upon implementation. The nature of my dissertation was open-ended, so as to encourage an expansion upon the work. As a result, when designing this code, I wanted to write routines that 
+                        would work in general, not just for the specific cases I wanted to test.
+                   </p>
+                </div>
+            </section>
+
+            <hr class="m-0" />
+
+            <!-- Implementation-->
+            <section class="dissertation-section" id="implementation">
+                <div class="dissertation-section-content">
+                   <h2 class="mb-3">
+                        Implementation
+                   </h2>
+
+                   <p class = "lead mb-4">
+                        <span class = "span-img-with-caption" style = "width:300px; float:right;">
+                            <img src="assets/img/basisfunction.png" alt="PetersonMesh" style = "width:300px;height:300x;" />
+                            One of the basis functions of the Peterson Mesh
+                        </span>
+                        Implementation of the construction & solution stages were written entirely in C++. Along with a class to handle Vectors (& some relevant operations thereof) modified by an earlier module I'd taken, I designed a general purpose Matrix
+                        class that includes operator overloads for basic matrix arithmatic, as well as more complex algorithms like Gaussian Elimination (used later in the project). Additionally, I designed a class to handle the meshes I would be using, which defines them in terms of a <b>Vertex Array</b> 
+                        (where each of the vertices are located in terms of x,y coordinates) and a <b>Connectivity Array</b> (which vertices need to be joined by lines in order to achieve the mesh).
+                        The mesh class also contained methods to perform red refinement (which works for any mesh that is stored in the object variables), and the vertical line refinement I had designed (which was specifically defined on the Peterson mesh).
+                        Finally, I needed to design a class to handle basis functions, which are also necessary to perform the integrals. These objects store their own private matrices, which in a way also define the mesh of points on which they are defined.
+                   </p>
+
+                   <p class = "lead mb-4">
+                        The main routine I designed to implement the DDMRes methodology first takes a Peterson Mesh of a given degree, refines it (with one of the two given methods), constructs one basis function object for each vertex in the test space, and performs all
+                        of the necessary integrals required to set up the system of equations. It then solves this system with the Gaussian Elimination routine that I wrote. Unfortunately, as a result of Gaussian Elimination being an O(n<sup>3</sup>) process (where n is the number of equations), and the Peterson mesh degree m 
+                        resulting in a system size of O(m<sup>2</sup>), the entire routine execution time is proportional to m<sup>5</sup>. As a result doubling the solution's resolution means the routine takes ~32 times longer to execute. In general, the solution matrices are sparse, so it is likely there is some much better solution algorithm that would make these results significantly more efficient to generate.
+                   </p>
+
+                   <p class = "lead mb-4">
+                        <span class = "span-img-with-caption" style = "width:300px; float:right;">
+                            <img src="assets/img/sinpix16.png" alt="PetersonMesh" style = "width:300px;height:300px;" />
+                            An approximation to sin(&pi;x) generated with DDMRes
+                        </span>
+
+                        Once the solution had been found, the routine writes them to a text file, which is then read in by a MATLAB script. The solution points are not uniform, so the script performs a linear interpolation on the data set such that it can be represented on a uniform 50x50 grid. 
+                        The main C++ routine also generates for reference two measures of the error relative to the exact solution. As I showed in my report, these are halved for a doubled resolution size, which demonstrates an optimal convergence rate that proved a novel result.
+                        <br> </br>
+                        The source code for this implementation can be found in my <a href="https://github.com/adam-howlett/DDMRes-2D/tree/main/src" target="_blank"> github repository</a> for the project. Given more time for the project, I would have explored different meshes, specifically convex polygonal domains,
+                        and a curvilinear (non-constant) velocity field. These would each prove a significant extra challenge to implement, but could be built logically from the code I have written.
+                        
+                   </p>
+                </div>
+            </section>
+
+            <hr class="m-0" />
+
+            <!-- User Interface Section -->
+            <section class="dissertation-section" id="ui">
+                <div class="dissertation-section-content">
+                   <h2 class="mb-3">
+                        Designing a User Interface
+                   </h2>
+
+                   <p class = "lead mb-4">
+                        <span class = "span-img-with-caption" style = "width:400px; float:right; padding:15px">
+                            <img src="assets/img/userinterface.png" alt="PetersonMesh" style = "width:400px;height:400x;" />
+                            The User Interface I designed
+                        </span>
+                        Once my dissertation was complete and my report handed in, I was aware that I'd want to be able to share the code I'd written in the context of a portfolio (and with other people in my personal life), so I decided to set myself the challenge of
+                        designing a GUI to take in user input and recreate the results used in my dissertation.
+                   </p>
+
+                   <p class = "lead mb-4">
+                        As an additional challenge, I decided to work with a C++ library called SFML that essentially handles object rendering, transformation and not much else. This meant that all of the behaviours of a regular GUI needed to be designed from the ground up. I was aware that there
+                        were much better options for an implementation of this kind, but I thought it would be more interesting to do it from a 'lower' level. All of the UI objects were designed by myself also, and the behaviours (like the options, slider & mouse hovering behaviours) were designed from first principles. 
+                        This actually proved much more challenging than I had originally anticipated, as there are many elements to how a fluid GUI operates that you might not consider if you're just using one, rather than designing it. 
+
+                        <br> </br> 
+                        The interface takes a selection of one of four functions, of which the fourth can be selected with an arbitrary velocity field angle. It then takes an option for which refinement method to use, and what size Peterson Mesh to build the solution on.
+                        If MATLAB is installed on the machine, it also runs the MATLAB code to plot the results for visualisation, and recovers this plot (and the viewing angle) for reference if you want to, say, change the field angle slightly to investigate how that changes results. It will also report both of the error metrics for reference.
+
+                        <br> </br>
+
+                        The release & executable for this version of the code can be found in <a href="https://github.com/adam-howlett/DDMRes-2D/tree/main/release" target="_blank"> github repository</a> for the project. In the future, I also want to design some level of integration of the code onto this webpage.
+                   </p>
+
                 </div>
             </section>
         </div>
+
+        <hr class="m-0" />
+        
+        <!-- Interact goes here at the end - at some point, I want some web integration that you can fiddle with it on -->
+        
+        </div>
+        
+
         <!-- Bootstrap core JS-->
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.bundle.min.js"></script>
