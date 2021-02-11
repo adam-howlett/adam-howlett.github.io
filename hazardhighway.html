@@ -1,286 +1,263 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-        <meta name="description" content="" />
-        <meta name="author" content="" />
-        <title>Hazard Highway</title>
-        <link rel="icon" type="image/x-icon" href="assets/img/favicon.ico" />
-        <!-- Font Awesome icons (free version)-->
-        <script src="https://use.fontawesome.com/releases/v5.13.0/js/all.js" crossorigin="anonymous"></script>
-        <!-- Google fonts-->
-        <link href="https://fonts.googleapis.com/css?family=Saira+Extra+Condensed:500,700" rel="stylesheet" type="text/css" />
-        <link href="https://fonts.googleapis.com/css?family=Muli:400,400i,800,800i" rel="stylesheet" type="text/css" />
-        <!-- Core theme CSS (includes Bootstrap)-->
-        <link href="css/styles.css" rel="stylesheet" />
-        <!-- Equations-->
-        <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
-        <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 
-        <style>
-        </style>
-    </head>
-    <body id="page-top">
-        <!-- Navigation-->
-        <nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top" id="sideNav">
-            <a class="navbar-brand js-scroll-trigger" href="index.html">
-                <span class="d-block d-lg-none">Adam Howlett</span>
-                <span class="d-none d-lg-block"><img class="img-fluid img-profile rounded-circle mx-auto mb-2" src="assets/img/profile.jpg" alt="" /></span>
-            </a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav">
-                    <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#overview">Overview</a></li>
-                    <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#model">The Model</a></li>
-                    <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#code">Implementation</a></li>
-                    <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#results">The Results</a></li>
-                </ul>
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+  <meta name="description" content="" />
+  <meta name="author" content="" />
+  <title>Hazard Highway</title>
+  <link rel="icon" type="image/x-icon" href="assets/img/favicon.ico" />
+  <!-- Font Awesome icons (free version)-->
+  <script src="https://use.fontawesome.com/releases/v5.13.0/js/all.js" crossorigin="anonymous"></script>
+  <!-- Google fonts-->
+  <link href="https://fonts.googleapis.com/css?family=Saira+Extra+Condensed:500,700" rel="stylesheet" type="text/css" />
+  <link href="https://fonts.googleapis.com/css?family=Muli:400,400i,800,800i" rel="stylesheet" type="text/css" />
+  <!-- Core theme CSS (includes Bootstrap)-->
+  <link href="css/styles.css" rel="stylesheet" />
+  <!-- Equations-->
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+</head>
+
+<body id="page-top">
+  <!-- Navigation-->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top" id="sideNav">
+    <a class="navbar-brand js-scroll-trigger" href="index.html">
+      <span class="d-block d-lg-none">Adam Howlett</span>
+      <span class="d-none d-lg-block"><img class="img-fluid img-profile rounded-circle mx-auto mb-2"
+          src="assets/img/profile.jpg" alt="" /></span>
+    </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span
+        class="navbar-toggler-icon"></span></button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav">
+        <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#overview">Overview</a></li>
+        <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#design">Planning & Design</a></li>
+        <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#code">Implementation</a></li>
+        <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#play">Play</a></li>
+      </ul>
+    </div>
+  </nav>
+  <div class="container-fluid p-0">
+
+    <!-- Overview-->
+    <section class="dissertation-section" id="overview">
+      <div class="dissertation-section-content">
+        <h1 class="mb-0">
+          Hazard
+          <span class="text-primary"> Highway </span>
+        </h1>
+        <div class="subheading mb-3">
+          A game developed in Unity · <a class="social-icon" href="https://github.com/adam-howlett/hazard-highway"
+          target="_blank">GitHub Repo <i class="fab fa-github"></i></a>
+        </div>
+        <p class="lead mb-3 mr-x1-1">
+          For my Scientific Computation masters, I did a module called Software Engineering Management, which was aimed at teaching the real-world implementation of coding projects.
+          A sizable portion of the coursework was a group project, where a team of us were tasked with developing a video game in Unity, within a handful of weeks.
+
+        </p>
+
+        <p class="lead mb-3">
+          As a team, we had no previous experience with the software, and were intentionally grouped such that none of us had the same academic background, and different skill sets.
+          We had to learn how to use the software, how to work with each other, and how to design and implement a software engineering project with a scope that none of us were familiar with.
+          
+
+        </p>
+
+        <p class="lead mb-3">
+          The module had a focus on Software Engineering methodologies & organisational practices. We used Scrum to manage the project, and came together in weekly sprints that I directed and organised.
+          We used these to make sure that everyone had something to do that complimented their particular skills, and to keep the project on track on a weekly basis.
+          The project was ultimately successful, and we were able to demonstrate a high quality prototype at the end of the allotted period.
+        </p>
+    </section>
+
+    <hr class="m-0" />
+
+
+    <!-- An Explanation of the Model -->
+    <section class="dissertation-section" id="design">
+      <div class="dissertation-section-content">
+        <h2 class="mb-3">
+          Planning & Design
+        </h2>
+
+        <p class="lead mb-4">
+          In the first session, the team got to know each other and our backgrounds to get a feel for how everyone would be able to contribute to the project. 
+          Afterwards, we had a brainstorming session about the game, which included research into the types of games that were popular with the demographic given to us. 
+          Eventually, we settled on the concept for a top-down driving game, where a car would avoid obstacles on the road by speeding up, slowing down and changing lanes. 
+          This concept would be simple, but naturally be able to be extended with the potential for lots of different features, so there was always room for extension depending on how efficiently we were able to work.
+        </p>
+
+        <p class="lead mb-4">
+          We operated according to a scrum framework, and I took on the role as scrum master. 
+          I would coordinate and lead weekly sprints, and attempted to direct the team’s individual strengths towards parts of the project that would make them the most effective. 
+          Additionally, I worked with other members of the team who were not as experienced with programming to help them up to speed with the kind of work that we needed to do, on top of designing the bulk of the game’s logic.
+        </p>
+
+
+        <p class="lead mb-4">
+
+          We tracked our progress with a number of software applications. 
+          Notably, we used slack to communicate outside of physical meetings and trello to generate kanban boards, used to keep the team up to date with things that still needed to be done.
+          More office like programs like and google sheets/docs were used to keep track of our progress, generate gantt charts and prepare our presentation for the end of the coursework. 
+          We also used these logs to generate tests for new features as they were added, ensuring we were keeping on top with how scripts and game elements would interact with each other.
+
+
+        </p>
+      </div>
+    </section>
+
+    <hr class="m-0" />
+
+    <!-- Implementation-->
+    <section class="dissertation-section" id="code">
+      <div class="dissertation-section-content">
+        <h2 class="mb-3">
+          Implementation
+        </h2>
+
+        <p class = "lead mb-4">
+          The game was designed in Unity, which incorporates scripts that are written in c#. 
+          We began by adding a stationary stock car asset onto a road, which then moves along that road. 
+          For various reasons, we decided it would be easier for the car to technically remain stationary, and for the road to move behind it, to give the illusion of the car driving.
+          Once the base was designed, we added in behaviour for some rocks that would follow the road for the player to avoid. 
+          We also added movement controls for the player, to allow them to change lanes, and move forwards and backwards along the road.
+
+        </p>
+
+        <p class="lead mb-4">
+
+          <span class = "span-img-with-caption" style = "width:400px; float:right;">
+            <img src="assets/img/hazardhighway/comp.png" alt="traffic500" style = "width:400px;height:400px;" />
+            The finished product, operating in 'normal' and 'Night' mode.
+        </span>
+        Next, other drivers were added, which had similar movement to the player car, but move at variable speeds and change lanes if they’re about to hit a rock. 
+        Other members of the team were working on the fuel counter and pickups, designing unique models and finding music/additional material for the game. 
+        A menu was also added, and other small user interface elements.
+
+        A great deal of attention was paid to small details throughout the project to make sure it was as good as it could be. 
+        Testing and foresight was a large part of the process, understanding and pre-empting possible bugs that we would not have considered by adding features in a modular way.
+        Additionally, attention to detail was paid to the movement to get it as fluid as possible. 
+        For example, directional controls on the lane changing mechanic were fine tuned so that you can hold them out to change lane twice, but this won't happen accidentally.
+        Other small touches like making the cars turn towards the lane they are changing into were added give a higher level of authenticity to the movement.
+
+        </p>
+
+        <p class = "lead mb-4">
+          The finished product was functional and presented with great success on the hand in. 
+          The night before, I spent an additional block of time to design a ‘night mode’ for the game, where vision would be greatly impaired and the driver would have to use their headlights.
+        </p>
+
+
+
+
+      </div>
+    </section>
+
+    <hr class="m-0" />
+
+    <!-- Interaction -->
+    <section class="dissertation-section" id="play">
+      <div class="dissertation-section-content">
+        <h2 class="mb-3">
+          Play
+        </h2>
+
+        <p class = "lead mb-3">
+          The finished effort can be played below on desktop devices. 
+          I'm hoping to build on this a little bit more, fix a few of the bugs that are still present, and add a few more features.
+          Given the timeframe we had to work with, I'm still very happy with the finished product.
+          It was received very well by the examiners, and in particular they praised my efforts working towards the end of the project towards additional features and general playability.
+        </p>
+
+        <br></br>
+
+        <div id="unity-container" class="unity-desktop">
+          <canvas id="unity-canvas"></canvas>
+          <div id="unity-loading-bar">
+            <div id="unity-logo"></div>
+            <div id="unity-progress-bar-empty">
+              <div id="unity-progress-bar-full"></div>
             </div>
-        </nav>
-        <div class="container-fluid p-0">
+          </div>
 
-            <!-- Overview-->
-            <section class="dissertation-section" id="overview">
-                <div class="dissertation-section-content">
-                    <h1 class="mb-0">
-                        Cellular 
-                        <span class="text-primary"> Automata<!--The Orange text can go in this class, but for the individual pages I think it looks better without --> </span>
-                    </h1>
-                    <div class="subheading mb-3">
-                       A Simple model for traffic flow  · <a class="social-icon" href="https://github.com/adam-howlett/Cellular-Automata" target="_blank" >GitHub Repo <i class="fab fa-github"></i></a> ·  <a href="assets/docs/Cellular Automata Model for Traffic Flow.pdf" target="_blank"> Project Report</a>
-                    </div>
-                    <p class="lead mb-3 mr-x1-1">
-                        This project was based on a 'Cellular Automaton' model for freeway traffic, as described by K. Nagel & M. Schreckenberg in their 1992 <a href= "https://hal.archives-ouvertes.fr/jpa-00246697/document" target="_blank"> paper of the same name </a>. 
-                        The model is a very simple representation of a real-world freeway, where cars (modelled as single ‘cells’) follow a strict set of rules for their evolution along the road.
-                        Despite the high level of abstraction, a monte carlo simulation of the model can be used to demonstrate relationships between variables of the road that are observed in real life.
-                        In particular, a relationship between the density of cars on the road and the total bulk movement of cars over time (termed the <i>flow</i>) can be observed.
-                        The relationship implies that the potential total flow of the road is maximised for a given 'critical density', above which the road is too congested, and below which there not enough cars contributing to the flow.
-                        This is not a trivial result, and demonstrates the model’s surprisingly powerful predictive capability.
-                                        
-                    </p>
+          <div id = "unity-mobile-warning">
+            WebGL builds are not supported on mobile devices.
+          </div>
 
-                    <p class ="lead mb-5">
-                            For a project in my 2nd Year of my Physics Degree, I wrote MATLAB programs to reproduce the main results found by Nagel & Schreckenberg, and attempted to extend the work to include additional variables. I looked at the effects of excessively
-                            fast/slow drivers on the system, as the initial model assumes all cars will attempt to reach the speed limit of the road, and go no further.
-                            
-                    </p>
-            </section>
-
-            <hr class="m-0" />
-
-
-            <!-- An Explanation of the Model -->
-            <section class="dissertation-section" id="model">
-                <div class="dissertation-section-content">
-                   <h2 class="mb-3">
-                        The Model
-                   </h2>
-
-                   <p class = "lead mb-4">
-                    The cellular automaton model assumes cars to occupy single ‘cells’, defined on discrete intervals along the road, which update their positions in discrete time steps. 
-                    The cars all have some speed \(v\), and every time step, they move v cells forwards. 
-                    All the cars start with some initial speed, and this speed changes each time step according to the following simple rules:
-                   </p>
-
-                   <p class = "lead mb-4">
-                       <ul class = "lead mb-2">
-                           <li ><b style = "font-weight: 600" >Acceleration:</b> If it won't hit another car, and is not travelling at the speed limit, a car will accelerate to \(v = v + 1\)</li>
-                           <li> <b style = "font-weight: 600">Conscious Deceleration:</b> If it will hit another car at the speed it is currently travelling, it will decelerate sufficiently to stay at least one cell behind it</li>
-                           <li> <b style = "font-weight: 600">Random Deceleration:</b> With a given probability (which is varied during the experiment), the car will deceletate by a speed of 1</li>
-                        </ul>
-                    </p>
-
-                   <p class = "lead mb-4">
-                        <span class = "span-img-with-caption" style = "width:500px; float:right; padding-right:0.75rem;">
-                            <img src="assets/img/automata/nagel_traffic.PNG" alt="NagelRoad" style = "width:500px;height:250px;" />
-                            The space-time representation of the road as given by Nagel & Schreckenberg. 
-                        </span>
-
-                        The road itself is modelled as one lane comprising \(N\) cells and \(n\) cars, which wraps onto itself (so cars leaving the end of the road rejoin at the start).
-                        To represent the evolution of road, a space-time representation is used.
-                        Each row of the graph represents the entire road at a certain time step, and evolves downwards with each time step.
-                        Each cell with a car is filled in with its current speed.
-                        The next time step down, you can see that it has advanced a number of cells according to whatever its speed is, and accelerated or decelerated according to the ruleset.
-
-                        <br></br>
-                        The closed nature of the road (meaning no cars can enter or leave) means we are fixing its density, \(\rho\), which we will define as:
-                        \[\rho = {\text{number of cars on the road} \over \text{number of cells on the road}} = {n \over N}.\]
-                        This is deliberate, as the main aim of the model will be to examine the effects that a given density has on the overall flow of the road. 
-                        The flow, \(Q\) is a measure of the total movement of the cars along the road, averaged over the whole simulation, and is given by
-                        \[Q = {\Sigma_{i,j} v_{i,j} \over T},\]
-                        where \(v_{i,j}\) is the velocity of car \(i\) at time step \(j\), and \(T\) is the total number of time steps.
-
-
-                   </p>
-                </div>
-            </section>
-
-            <hr class="m-0" />
-
-            <!-- Implementation-->
-            <section class="dissertation-section" id="code">
-                <div class="dissertation-section-content">
-                   <h2 class="mb-3">
-                        Implementation
-                   </h2>
-
-                   <p class = "lead mb-4">
-                    Two main programs were written for my original implementation - both in MATLAB. 
-                    The first generated space-time graphs for a single instance of the simulation, and the following core variables could be edited:
-                   </p>
-
-                   <p class = "lead mb-4">
-                       <ul class = "lead mb-2">
-                           <li> \(T\) - The total number of time steps to run the simulation for</li>
-                           <li> \(N\) - The length of the road, in terms of the number of cells</li>
-                           <li> pSlowdown - The probability that any given car will slow down on any time step</li>
-                        </ul>
-                    </p>
-
-                    <p class = "lead mb-4">
-                        The program also calculated the time-averaged flow, as well as the density of the cars along the road for reference.
-                        Later, I extended the program to include the possibility of excessively slow or fast drivers on the road. 
-                        These drivers would effectively have their speed limits changed, so they would stop accelerating before they hit the speed limit, or keep going afterwards.
-                        This introduced the following two parameters to the system:
-                    </p>
-
-                    <p class = "lead mb-4">
-                        
-                    </p>
-
-                    <p class = "lead mb-4">
-                        
-
-                    </p>
-
-                   <p class = "lead mb-4">
-                        <span class = "span-img-with-caption" style = "width:400px; float:right;">
-                            <img src="assets/img/automata/traffic500.png" alt="traffic500" style = "width:400px;height:400px;" />
-                            Space-time graph for pSlowdown=0.2, \(N\)=500, 
-                            <br>\(T\)=500, pSpeedChange = 0.</br>
-                        </span>
-
-                        <ul class = "lead mb-3">
-                            <li> pSpeedChange - The probability that any given car will have a speed limit faster or slower than the average</li>
-                            <li> maxSpeedChange - The maximum number of speed units that the speed limits can be altered by (in either direction) </li>
-                        </ul>
-
-                        <b class = "lead mb-5">The inclusion of just these parameters is enough to see the evolution of 'Start-stop' waves along the road, as pictured. 
-                        Traffic jams form, and move backwards along the road. Cars join the traffic jam at the back, and when allowed to leave (with sufficient space in front of them), they accelerate to their top speed until they hit the next jam.
-                        
-                        <br> </br>
-
-                        By experimenting with the parameters in the first program, it is obvious that the density of the road and the flow are related in some way, for any given pSlowdown.
-                        The second program attempts to examine the relationship  in a more explicit way, running multiple runs of the experiment for different density values at given slowdown probabilities. 
-                        It then plots the two values for comparison. With this, we can also edit the variables from the extension, to examine what effect (if any) they have on this relationship.</b>
-                        
-                   </p>
-                </div>
-            </section>
-
-            <hr class="m-0" />
-
-            <!-- Interaction -->
-            <section class="dissertation-section" id="results">
-                <div class="dissertation-section-content">
-                   <h2 class="mb-3">
-                        The Results
-                   </h2>
-
-                   <p class = "lead mb-4">
-                        <span class = "span-img-with-caption" style = "width:400px; float:right; padding:15px">
-                            <img src="assets/img/automata/flow_density_comparisons.PNG" alt="flow-density-relationship" style = "width:400px;height:400x;" />
-                            The flow-density relationship for pSlowdown = 0, 0.2, 0.4, 0.6 & 0.8.
-                            <br>\(N\) = 100, \(T\)=50, Q averaged over 100 simulations for each data point.</br>
-                        </span>
-                        Ultimately, I was able to demonstrate the same relationship between flow & density as Nagel & Schreckenberg. If we take pSlowdown to be 0, we find the critical density to be at 0.18 precisely.
-                        As pSlowdown increases towards 1, we see the amplitude of the graph decreasing, as would be expected if cars are generally moving slower. 
-                        Additionally, the position of the ampitude moves further to the left, as well as having a less distinct relationship with the surrounding points.
-                        
-                   </p>
-
-                   <div id="unity-container" class="unity-desktop">
-					<canvas id="unity-canvas"></canvas>
-					<div id="unity-loading-bar">
-					  <div id="unity-logo"></div>
-					  <div id="unity-progress-bar-empty">
-						<div id="unity-progress-bar-full"></div>
-					  </div>
-					</div>
-					<div id="unity-mobile-warning">
-					  WebGL builds are not supported on mobile devices.
-					</div>
-					<div id="unity-footer">
-					  <div id="unity-webgl-logo"></div>
-					  <div id="unity-fullscreen-button"></div>
-					  <div id="unity-build-title">Hazard Highway</div>
-					</div>
-				  </div>
-				  <script>
-					var buildUrl = "assets/hazard-highway/Build";
-					var loaderUrl = buildUrl + "/WebGL Build.loader.js";
-					var config = {
-					  dataUrl: buildUrl + "/WebGL Build.data",
-					  frameworkUrl: buildUrl + "/WebGL Build.framework.js",
-					  codeUrl: buildUrl + "/WebGL Build.wasm",
-					  streamingAssetsUrl: "StreamingAssets",
-					  companyName: "DefaultCompany",
-					  productName: "Hazard Highway",
-					  productVersion: "0.1",
-					};
-			  
-					var container = document.querySelector("#unity-container");
-					var canvas = document.querySelector("#unity-canvas");
-					var loadingBar = document.querySelector("#unity-loading-bar");
-					var progressBarFull = document.querySelector("#unity-progress-bar-full");
-					var fullscreenButton = document.querySelector("#unity-fullscreen-button");
-					var mobileWarning = document.querySelector("#unity-mobile-warning");
-			  
-					if (/iPhone|iPad|iPod|Android/i.test(navigator.userAgent)) {
-					  container.className = "unity-mobile";
-					  config.devicePixelRatio = 1;
-					  mobileWarning.style.display = "block";
-					  setTimeout(() => {
-						mobileWarning.style.display = "none";
-					  }, 5000);
-					} else {
-					  canvas.style.width = "1024px";
-					  canvas.style.height = "576px";
-					}
-					loadingBar.style.display = "block";
-			  
-					var script = document.createElement("script");
-					script.src = loaderUrl;
-					script.onload = () => {
-					  createUnityInstance(canvas, config, (progress) => {
-						progressBarFull.style.width = 100 * progress + "%";
-					  }).then((unityInstance) => {
-						loadingBar.style.display = "none";
-						fullscreenButton.onclick = () => {
-						  unityInstance.SetFullscreen(1);
-						};
-					  }).catch((message) => {
-						alert(message);
-					  });
-					};
-					document.body.appendChild(script);
-				  </script>
-
-                </div>
-            </section>
+          <div id="unity-footer">
+            <div id="unity-webgl-logo"></div>
+            <div id="unity-fullscreen-button"></div>
+            <div id="unity-build-title">Hazard Highway</div>
+          </div>
         </div>
 
-        <hr class="m-0" />
-            <!--Another Section-->>
-        </div>
-        
+        <script>
 
-        <!-- Bootstrap core JS-->
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.bundle.min.js"></script>
-        <!-- Third party plugin JS-->
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.min.js"></script>
-        <!-- Core theme JS-->
-        <script src="js/scripts.js"></script>
-    </body>
+          var buildUrl = "assets/hazard-highway/Build";
+          var loaderUrl = buildUrl + "/WebGL Build.loader.js";
+          var config = {
+            dataUrl: buildUrl + "/WebGL Build.data",
+            frameworkUrl: buildUrl + "/WebGL Build.framework.js",
+            codeUrl: buildUrl + "/WebGL Build.wasm",
+            streamingAssetsUrl: "StreamingAssets",
+            productName: "Hazard Highway",
+            productVersion: "0.1",
+          };
+
+          var container = document.querySelector("#unity-container");
+          var canvas = document.querySelector("#unity-canvas");
+          var loadingBar = document.querySelector("#unity-loading-bar");
+          var progressBarFull = document.querySelector("#unity-progress-bar-full");
+          var fullscreenButton = document.querySelector("#unity-fullscreen-button");
+          var mobileWarning = document.querySelector("#unity-mobile-warning");
+
+          if (/iPhone|iPad|iPod|Android/i.test(navigator.userAgent)) {
+            container.className = "unity-mobile";
+            config.devicePixelRatio = 1;
+            mobileWarning.style.display = "block";
+            setTimeout(() => {
+              mobileWarning.style.display = "none";
+            }, 5000);
+          } else {
+            canvas.style.width = "1024px";
+            canvas.style.height = "576px";
+          }
+          loadingBar.style.display = "block";
+
+          var script = document.createElement("script");
+          script.src = loaderUrl;
+          script.onload = () => {
+            createUnityInstance(canvas, config, (progress) => {
+              progressBarFull.style.width = 100 * progress + "%";
+            }).then((unityInstance) => {
+              loadingBar.style.display = "none";
+              fullscreenButton.onclick = () => {
+                unityInstance.SetFullscreen(1);
+              };
+            }).catch((message) => {
+              alert(message);
+            });
+          };
+
+          document.body.appendChild(script);
+
+        </script>
+
+      </div>
+    </section>
+  </div>
+
+
+  <!-- Bootstrap core JS-->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.bundle.min.js"></script>
+  <!-- Third party plugin JS-->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.min.js"></script>
+  <!-- Core theme JS-->
+  <script src="js/scripts.js"></script>
+</body>
+
 </html>
