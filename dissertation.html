@@ -13,6 +13,9 @@
         <link href="https://fonts.googleapis.com/css?family=Muli:400,400i,800,800i" rel="stylesheet" type="text/css" />
         <!-- Core theme CSS (includes Bootstrap)-->
         <link href="css/styles.css" rel="stylesheet" />
+        <!-- Equations-->
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+        <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
         <style>
         </style>
     </head>
@@ -57,7 +60,7 @@
                             For this project, I wrote several C++ programs to define and solve the problem on this test case. 
                             Using object orientation principles, I constructed classes to define the mathematical objects that are used in the discretisation methods, and then designed additional routines to construct and solve the resultant system. 
                             Ultimately, I was able to demonstrate optimal convergence rates to known solutions, which had not been achieved before in this way.
-                            I have since extended the program to take user input via a user interface I designed, and recreate the main results used in my dissertation project.
+                            I have since extended the program to take input via a user interface I designed, and recreate the main results used in my dissertation project.
                     </p>
             </section>
 
@@ -128,8 +131,11 @@
 
                    <p class = "lead mb-4">
                         The main routine I designed to implement the DDMRes methodology first takes a Peterson Mesh of a given degree, refines it (with one of the two given methods), constructs one basis function object for each vertex in the test space, and performs all
-                        of the necessary integrals required to set up the system of equations. It then solves this system with the Gaussian Elimination routine that I wrote. Unfortunately, as a result of Gaussian Elimination being an O(n<sup>3</sup>) process (where n is the number of equations), and the Peterson mesh degree m 
-                        resulting in a system size of O(m<sup>2</sup>), the entire routine execution time is proportional to m<sup>5</sup>. As a result doubling the solution's resolution means the routine takes ~32 times longer to execute. In general, the solution matrices are sparse, so it is likely there is some much better solution algorithm that would make these results significantly more efficient to generate.
+                        of the necessary integrals required to set up the system of equations. It then solves this system with the Gaussian Elimination routine that I wrote. 
+                        Unfortunately, as a result of Gaussian Elimination being an \(\mathcal{O}(n^{3})\) process (where \(n\) is the number of equations), and a Peterson mesh of degree \(m\) 
+                        resulting in a system size of \(\mathcal{O}(n^{2})\), the entire routine execution time is proportional to \(m^5\). 
+                        As a result, doubling the resolution of the solution means the routine takes ~32 times longer to execute. 
+                        In general, the solution matrices are sparse, so it is likely there is some much better solution algorithm that would make these results more efficient to generate.
                    </p>
 
                    <p class = "lead mb-4">
@@ -138,11 +144,12 @@
                             An approximation to sin(&pi;x) generated with DDMRes
                         </span>
 
-                        Once the solution had been found, the routine writes them to a text file, which is then read in by a MATLAB script. The solution points are not uniform, so the script performs a linear interpolation on the data set such that it can be represented on a uniform 50x50 grid. 
-                        The main C++ routine also generates for reference two measures of the error relative to the exact solution. As I showed in my report, these are halved for a doubled resolution size, which demonstrates an optimal convergence rate that proved a novel result.
+                        Once the solution is found, the routine writes them to a text file, which is then read in by a MATLAB script. 
+                        The solution points are not on a square grid, so the script performs a linear interpolation on the data set such that it can be represented on a uniform 50x50 mesh. 
+                        The main C++ routine also generates for reference two measures of the error relative to the exact solution. As I showed in my report, these are halved for a doubled resolution size, which demonstrates an optimal convergence rate.
                         <br> </br>
                         The source code for this implementation can be found in my <a href="https://github.com/adam-howlett/DDMRes-2D/tree/main/src" target="_blank"> github repository</a> for the project. Given more time for the project, I would have explored different meshes, specifically convex polygonal domains,
-                        and a curvilinear (non-constant) velocity field. These would each prove a significant extra challenge to implement, but could be built logically from the code I have written.
+                        and a curvilinear (non-constant) velocity field. These would each prove a significant extra challenge to implement, but could be built as an extension to the code i've written.
                         
                    </p>
                 </div>

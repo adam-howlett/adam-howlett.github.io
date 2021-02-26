@@ -52,6 +52,13 @@
                     <p class="lead mb-3 mr-x1-1">
                         This project was based on a 'Cellular Automaton' model for freeway traffic, as described by K. Nagel & M. Schreckenberg in their 1992 <a href= "https://hal.archives-ouvertes.fr/jpa-00246697/document" target="_blank"> paper of the same name </a>. 
                         The model is a very simple representation of a real-world freeway, where cars (modelled as single ‘cells’) follow a strict set of rules for their evolution along the road.
+                        
+        
+                                        
+                    </p>
+
+                    <p class="lead mb-3 mr-x1-1">
+                
                         Despite the high level of abstraction, a monte carlo simulation of the model can be used to demonstrate relationships between variables of the road that are observed in real life.
                         In particular, a relationship between the density of cars on the road and the total bulk movement of cars over time (termed the <i>flow</i>) can be observed.
                         The relationship implies that the potential total flow of the road is maximised for a given 'critical density', above which the road is too congested, and below which there not enough cars contributing to the flow.
@@ -78,14 +85,14 @@
 
                    <p class = "lead mb-4">
                     The cellular automaton model assumes cars to occupy single ‘cells’, defined on discrete intervals along the road, which update their positions in discrete time steps. 
-                    The cars all have some speed \(v\), and every time step, they move v cells forwards. 
+                    The cars all have some speed \(v\), and every time step, they move \(v\) cells forwards. 
                     All the cars start with some initial speed, and this speed changes each time step according to the following simple rules:
                    </p>
 
                    <p class = "lead mb-4">
                        <ul class = "lead mb-2">
                            <li ><b style = "font-weight: 600" >Acceleration:</b> If it won't hit another car, and is not travelling at the speed limit, a car will accelerate to \(v = v + 1\)</li>
-                           <li> <b style = "font-weight: 600">Conscious Deceleration:</b> If it will hit another car at the speed it is currently travelling, it will decelerate sufficiently to stay at least one cell behind it</li>
+                           <li> <b style = "font-weight: 600">Conscious Deceleration:</b> If it will hit another car at the speed it is currently travelling, it will decelerate sufficiently to stay one cell behind it</li>
                            <li> <b style = "font-weight: 600">Random Deceleration:</b> With a given probability (which is varied during the experiment), the car will deceletate by a speed of 1</li>
                         </ul>
                     </p>
@@ -107,8 +114,8 @@
                         \[\rho = {\text{number of cars on the road} \over \text{number of cells on the road}} = {n \over N}.\]
                         This is deliberate, as the main aim of the model will be to examine the effects that a given density has on the overall flow of the road. 
                         The flow, \(Q\) is a measure of the total movement of the cars along the road, averaged over the whole simulation, and is given by
-                        \[Q = {\Sigma_{i,j} v_{i,j} \over T},\]
-                        where \(v_{i,j}\) is the velocity of car \(i\) at time step \(j\), and \(T\) is the total number of time steps.
+                        \[Q = {\Sigma_{i,j} v_{ij} \over T},\]
+                        where \(v_{ij}\) is the velocity of car \(i\) at time step \(j\), and \(T\) is the total number of time steps.
 
 
                    </p>
@@ -144,15 +151,6 @@
                         This introduced the following two parameters to the system:
                     </p>
 
-                    <p class = "lead mb-4">
-                        
-                    </p>
-
-                    <p class = "lead mb-4">
-                        
-
-                    </p>
-
                    <p class = "lead mb-4">
                         <span class = "span-img-with-caption" style = "width:400px; float:right;">
                             <img src="assets/img/automata/traffic500.png" alt="traffic500" style = "width:400px;height:400px;" />
@@ -160,21 +158,24 @@
                             <br>\(T\)=500, pSpeedChange = 0.</br>
                         </span>
 
-                        <ul class = "lead mb-3">
+                        <ul class = "lead mb-2">
                             <li> pSpeedChange - The probability that any given car will have a speed limit faster or slower than the average</li>
                             <li> maxSpeedChange - The maximum number of speed units that the speed limits can be altered by (in either direction) </li>
                         </ul>
 
-                        <b class = "lead mb-5">The inclusion of just these parameters is enough to see the evolution of 'Start-stop' waves along the road, as pictured. 
-                        Traffic jams form, and move backwards along the road. Cars join the traffic jam at the back, and when allowed to leave (with sufficient space in front of them), they accelerate to their top speed until they hit the next jam.
-                        
-                        <br> </br>
+                   </p>
 
+                   <p class = "lead mb-3">
+                       The inclusion of just these parameters is enough to see the evolution of 'Start-stop' waves along the road, as pictured. 
+                        Traffic jams form, and move backwards along the road. 
+                        Cars join the traffic jam at the back, and when allowed to leave (with sufficient space in front of them), they accelerate to their top speed until they hit the next jam.
+                    </p>
+
+                    <p class = "lead mb-5">
                         By experimenting with the parameters in the first program, it is obvious that the density of the road and the flow are related in some way, for any given pSlowdown.
                         The second program attempts to examine the relationship  in a more explicit way, running multiple runs of the experiment for different density values at given slowdown probabilities. 
-                        It then plots the two values for comparison. With this, we can also edit the variables from the extension, to examine what effect (if any) they have on this relationship.</b>
-                        
-                   </p>
+                        It then plots the two values for comparison. With this, we can also edit the variables from the extension, to examine what effect (if any) they have on this relationship.
+                    </p>
                 </div>
             </section>
 

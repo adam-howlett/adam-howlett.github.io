@@ -1,21 +1,229 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="utf-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-        <meta name="description" content="" />
-        <meta name="author" content="" />
-        <title>Adam Howlett</title>
-        <link rel="icon" type="image/x-icon" href="assets/img/favicon.ico" />
-        <!-- Font Awesome icons (free version)-->
-        <script src="https://use.fontawesome.com/releases/v5.13.0/js/all.js" crossorigin="anonymous"></script>
-        <!-- Google fonts-->
-        <link href="https://fonts.googleapis.com/css?family=Saira+Extra+Condensed:500,700" rel="stylesheet" type="text/css" />
-        <link href="https://fonts.googleapis.com/css?family=Muli:400,400i,800,800i" rel="stylesheet" type="text/css" />
-        <!-- Core theme CSS (includes Bootstrap)-->
-        <link href="css/styles.css" rel="stylesheet" />
-    </head>
-    <body id="page-top">
-        AnyLogic Implementation page - Under Construction
-    </body>
+
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+  <meta name="description" content="" />
+  <meta name="author" content="" />
+  <title>Workforce Optimisation</title>
+  <link rel="icon" type="image/x-icon" href="assets/img/favicon.ico" />
+  <!-- Font Awesome icons (free version)-->
+  <script src="https://use.fontawesome.com/releases/v5.13.0/js/all.js" crossorigin="anonymous"></script>
+  <!-- Google fonts-->
+  <link href="https://fonts.googleapis.com/css?family=Saira+Extra+Condensed:500,700" rel="stylesheet" type="text/css" />
+  <link href="https://fonts.googleapis.com/css?family=Muli:400,400i,800,800i" rel="stylesheet" type="text/css" />
+  <!-- Core theme CSS (includes Bootstrap)-->
+  <link href="css/styles.css" rel="stylesheet" />
+  <!-- Equations-->
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+</head>
+
+<body id="page-top">
+  <!-- Navigation-->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top" id="sideNav">
+    <a class="navbar-brand js-scroll-trigger" href="index.html">
+      <span class="d-block d-lg-none">Adam Howlett</span>
+      <span class="d-none d-lg-block"><img class="img-fluid img-profile rounded-circle mx-auto mb-2"
+          src="assets/img/profile.jpg" alt="" /></span>
+    </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span
+        class="navbar-toggler-icon"></span></button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav">
+        <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#overview">Overview</a></li>
+        <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#design">Model Design</a></li>
+        <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#code">Optimisation Experiment</a></li>
+        <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#interact">Interact</a></li>
+      </ul>
+    </div>
+  </nav>
+  <div class="container-fluid p-0">
+
+    <!-- Overview-->
+    <section class="dissertation-section" id="overview">
+      <div class="dissertation-section-content">
+        <h1 class="mb-0">
+          Workforce
+          <span class="text-primary"> Optimisation </span>
+        </h1>
+        <div class="subheading mb-3">
+          An experiment in Anylogic · 
+          <a class="social-icon" href="https://github.com/adam-howlett/charity-shops-optimisation" target="_blank">GitHub Repo <i class="fab fa-github"></i></a> · 
+          <a href="assets/docs/SOD_Report.pdf" target="_blank"> Project Report</a>
+        </div>
+        <p class="lead mb-3 mr-x1-1">
+          Another project from my Scientific Computation Masters, from the module "Simulation and Optimisation for Decision Support". 
+          This module was focused on the application of Operations Research principles to a commercial setting. 
+          For the main coursework we were tasked with an optimisation problem built to mirror the sorts of problems that OR solves in the real world.
+        </p>
+
+        <p class="lead mb-3">
+          I was given the setting of a chain of charity stores, who were looking to optimise the use of their workforce, so that they were optimally staffed in any given sitation. 
+          The chain have a centralised workforce pool, so they can distribute employees across different stores as they see fit.
+        </p>
+
+        <p class="lead mb-3">
+          I designed a model that would, as faithfully as possible, represent the real world system, taking into account several variables that would be important for the day-to-day operation of the stores, without overcomplications. 
+          I then implemented this model in Anylogic PLE as a simulation, and then performed an optimisation experiment to find the best allocation of staff resources to maximise utilisation, subject to restraints on customer wait times, stock percentage and store cleanliness.
+
+        </p>
+
+        <p class="lead mb-3">
+            The simulation was reduced to the point where it was directly solvable, and a single, best distribution across 2 larger stores and 3 smaller stores was found that meant stores would be staffed correctly for an average day of operation.
+        </p>
+    </section>
+
+    <hr class="m-0" />
+
+
+    <!-- An Explanation of the Model -->
+    <section class="dissertation-section" id="design">
+      <div class="dissertation-section-content">
+        <h2 class="mb-3">
+          Planning & Design
+        </h2>
+
+        <p class="lead mb-3">
+          When designing a model to be simulated, it is important to do so  in a way that does not have any specific implementation in mind.
+          As a result, the model itself is nothing more than a list of all of the considerations of the system, in terms of parameters to be varied, 
+          variables to be tracked, and instructions for how different parts of the model interact with each other.
+
+          For example, my model takes into account 3 variables for the stores themselves:
+        </p>
+
+        <p class = "lead mb-2">
+          <ul class = "lead mb-2">
+              <li ><b style = "font-weight: 600">Store Cleanliness </b> - Expressed as a percentage score</li>
+              <li> <b style = "font-weight: 600">Stock Percentage </b> - The percentage of shelves stocked with goods customers can purchase.</li>
+              <li> <b style = "font-weight: 600">Waiting times</b> - The amount of time a customer waits before being served, after they've gone to a till </li>
+           </ul> 
+       </p>
+
+        <p class="lead mb-4">
+          These three parameters are combined into a single statistic, the customer satisfaction score, where each variable has a weight of a third. It is calculated as
+        </p>
+
+        <p class = "lead mb-4" style = "text-align: center;">
+          Customer Satisfaction Score \(=  3.34 - \frac{T}{60 \text{x} 3} + \frac{3.33 \text{x} S}{100} + \frac{3.33 \text{x} C}{100}\)
+        </p>
+
+        <p class = "lead mb-2">
+          
+        </p>
+
+        <p class="lead mb-4">
+          where \(T\) is the time spent waiting (in seconds), \(S\) is the stock percentage, and \(C\) is the cleanliness percentage.
+          <span class = "span-img-with-caption" style = "width:500px; float:right; padding-right:0.75rem;">
+            <img src="assets/img/charityshops/employeelogic.PNG" alt="EmployeeLogic"  />
+          </span>
+          
+          <br></br>
+          Behaviours of the agents within the model are captured in flow charts. For example, Employees have a hierarchy of tasks, and will do the most important avaiable task at any given time. 
+          The idling time in the flow chart (when no tasks are available) is essentially what is to be minimised in the experiment, and we calculate the total 'Employee Utilisation' as 
+
+        </p>
+
+        <p class = "lead mb-4" style = "text-align: center;">
+          Total Employee Utilisation \(=  \frac{\sum_{j}\sum_{i}x_{ij}}{nt}\)
+        </p>
+
+        <p class = "lead mb-4">
+          where \(x_{ij}\) is 0 if employee \(i\) is idle at timestep \(j\), and 1 otherwise. \(t\) is the total number of timesteps up to that point, and \(n\) is the total number of employees that are working.         
+        </p>
+
+        <p class = "lead mb-4">
+          As this is a model scenario, it is important to make sensible abstractions from the real world setting to avoid unnecessary calculations, and assumptions based on a lack of extensive data about the real world scenario. 
+          For example, some of the simplifications and assumptions in my model were:        
+        </p>
+
+        <p class = "lead mb-2">
+          <ul class = "lead mb-2">
+              <li> Customers are identical in behaviour - different stereotypes/personalities are not accounted for </li>
+              <li> Employees all work at the same rate, and do not become fatigued or ill </li>
+              <li> Each customer reduces the stock percentage by the same amount when they buy something </li>
+              <li> Customers arrive according to a predictable distribution (e.g slow start to the day, and peak times at 12:00PM) </li>
+           </ul> 
+       </p>
+
+      </div>
+    </section>
+
+    <hr class="m-0" />
+
+    <!-- Implementation -->
+    <section class="dissertation-section" id="code">
+      <div class="dissertation-section-content">
+        <h2 class="mb-3">
+          Implementation
+        </h2>
+
+        <p class = "lead mb-4">
+          Since the end goal was to find an optimal solution for the model, which could then hopefully be translated into a real-life solution, 
+          it needed to be implemented in some software that can run it many times over and observe the effects on the variables.       
+        </p>
+
+        <p class="lead mb-4">
+
+          <span class = "span-img-with-caption" style = "width:600px; height:200px; float:right;">
+            <img src="assets/img/charityshops/customerlogic_anylogic.PNG" alt="customerlogic_anylogic" style = "width:600; height:186px;"></img>
+        </span>
+        The software I constructed the implementation in was Anylogic PLE, a framework designed to handle experiments like this, and to deliver real world OR solutions. 
+        The core units in Anylogic are 'Agents', who interact with each other in programmable ways. 
+        More complicated behaviours can be extended to agents and objects within them using java. 
+        For example, I wrote code to update the employee utilisation every timestep, to activate once every second. 
+        </p>
+
+        <p class = "lead mb-4">
+          Pictured is the Anylogic implementation of the process chain that ‘customer’ agents move through on two queues within one of the smaller stores
+          At most stages, parameters of the queue (like waiting times) decide how the customers move forward, like in a flow chart.   
+        </p>
+
+        <p class = "lead mb-4">
+          The model is sufficiently simple to be explicitly solvable, although this does take a long time. 
+          An experiment (built in to Anylogic) runs the model for different numbers at different stores, and finds the solution that maximises employee utilisation, subject to restraints on the customer satisfaction scores. 
+          The experiment I ran for the coursework successfully finds the best feasible solution within about an hour.     
+        </p>
+
+
+
+      </div>
+    </section>
+
+    <hr class="m-0" />
+
+    <!-- Interaction -->
+    <section class="dissertation-section" id="interact">
+      <div class="dissertation-section-content">
+        <h2 class="mb-3">
+          Interact
+        </h2>
+
+        <p class = "lead mb-3">
+          The simulation created on Anylogic can be played below on desktop devices. You can drag the screen around and see the aggregate statistics from the main menu, and double click each of the stores to see them operating on a moment-by-moment basis.
+        </p>
+
+        <br></br>
+        
+        <p align="center">          
+          <iframe width="1000" height="650"  allow="fullscreen" src="https://cloud.anylogic.com/assets/embed?modelId=c4891802-1198-414a-bea0-32cccf3aaa25"></iframe>
+        </p>
+        
+
+      </div>
+    </section>
+  </div>
+
+
+  <!-- Bootstrap core JS-->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.bundle.min.js"></script>
+  <!-- Third party plugin JS-->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.min.js"></script>
+  <!-- Core theme JS-->
+  <script src="js/scripts.js"></script>
+</body>
+
 </html>
